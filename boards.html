@@ -1,44 +1,874 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel ="stylesheet" href="styles.css">
-    <title>Loteria</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Loteria</title>
 </head>
+
+
 <body>
-    <div class="hero">
-        <div class="logo">
-            <a href="index.html">
-            <img src="images/logo.png">
-            </a>
-        </div>
-        <div class="content2">
-            <li>Select Your Game Board</li>
-            <li>(Once clicked on, game will start)</li>
-            <div class="boards">
-                <a href="gameplay.html">
-                    <img src="images/board1.PNG">
-                </a>
-                <a href="gameplay.html">
-                    <img src="images/board2.PNG">
-                </a>
-                <a href="gameplay.html">
-                    <img src="images/board3.PNG">
-                </a>
-                <a href="gameplay.html">
-                    <img src="images/board4.PNG">
-                </a>
-                <a href="gameplay.html">
-                    <img src="images/board5.PNG">
-                </a>
-                <a href="gameplay.html">
-                    <img src="images/board6.PNG">
-                </a>
-            </div>
-            <h3>Copyright ©2023 by Landen Garcia and Joshua Guzman</h3>
-        </div>
+  <div class="hero-board">
+    <div class="logo">
+      <a href="index.html">
+        <img src="images/logo.png">
+      </a>
     </div>
+    <div class="content2">
+      <ul>
+        <li>Select Your Game Board</li>
+        <li>(Once clicked on, game will start)</li>
+      </ul>
+      <div class="whole-container">
+        <div class="board-container">
+          <a href="gameplay.html">
+            <div class="board" id="board1">
+              <div class="row">
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card1.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card2.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card3.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card4.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card5.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card6.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card7.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card8.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card9.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card10.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card11.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card12.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card13.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card14.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card15.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card16.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card17.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card18.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card19.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card20.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card21.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card22.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card23.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card24.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card25.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="board-container">
+          <a href="gameplay.html">
+            <div class="board" id="board2">
+              <div class="row">
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card1.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card2.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card3.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card4.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card5.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card6.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card7.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card8.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card9.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card10.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card11.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card12.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card13.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card14.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card15.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card16.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card17.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card18.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card19.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="card">
+                    <img src="Images/card20.PNG" alt="" width="200" height="200">
+                  </div>
+                </div>
+              </div>
+            
+            <div class="row">
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card21.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card22.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card23.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card24.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card25.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+        </div>
+        <div class="board-container">
+          <a href="gameplay.html">
+          <div class="board" id="board3">
+            <div class="row">
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card1.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card2.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card3.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card4.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card5.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card6.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card7.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card8.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card9.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card10.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card11.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card12.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card13.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card14.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card15.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card16.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card17.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card18.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card19.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card20.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card21.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card22.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card23.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card24.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card25.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+            </div>
+          </a>
+          </div> 
+        </div>
+        <div class="board-container">
+          <a href="gameplay.html">
+          <div class="board" id="board4">
+            <div class="row">
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card1.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card2.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card3.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card4.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card5.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card6.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card7.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card8.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card9.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card10.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card11.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card12.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card13.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card14.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card15.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card16.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card17.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card18.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card19.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card20.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card21.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card22.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card23.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card24.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card25.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+            </div>
+          </a>
+          </div>
+        </div>
+        <div class="board-container">
+          <a href="gameplay.html">
+          <div class="board" id="board5">
+            <div class="row">
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card1.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card2.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card3.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card4.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card5.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card6.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card7.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card8.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card9.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card10.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card11.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card12.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card13.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card14.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card15.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card16.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card17.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card18.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card19.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card20.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card21.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card22.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card23.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card24.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card25.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+            </div>
+          </a>
+          </div>
+        </div>
+        <div class="board-container">
+          <a href="gameplay.html">
+          <div class="board" id="board6">
+            <div class="row">
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card1.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card2.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card3.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card4.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card5.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card6.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card7.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card8.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card9.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card10.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card11.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card12.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card13.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card14.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card15.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card16.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card17.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card18.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card19.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card20.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card21.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card22.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card23.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card24.PNG" alt="" width="200" height="200">
+                </div>
+              </div>
+              <div class="cell">
+                <div class="card">
+                  <img src="Images/card25.PNG" alt="" width="200" height="200">
+                </div>  
+              </div>
+            </div>
+          </a>
+            <script src="script.js"></script>
 </body>
 </html>
