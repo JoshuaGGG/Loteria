@@ -150,7 +150,6 @@
     justify-content: center;
     align-items: center;
     border: 10px solid black;
-    /* padding: 5px; */
     box-sizing: border-box;
     max-width: 500px;
     margin: 16px;
@@ -199,3 +198,42 @@
     object-fit: cover;
     border-radius: 10px;
   }
+  #gameplay{
+    display: none;
+  }
+  #player-board{
+    background-color: green;
+    height: 200px;
+    width: 300px;
+    margin: 20px;
+    float:left;
+  }
+  #cpu1-board{
+    background-color: blue;
+    height: 200px;
+    width: 300px;
+    margin: 20px;
+    float:left;
+  }
+  #cpu2-board{
+    background-color: red;
+    height: 200px;
+    width: 300px;
+    margin: 20px;
+    float:left;
+  }
+  #score{
+    background-color: yellow;
+    height: 50px;
+    margin: 20px;
+    clear: both;
+  }
+  #player-board{
+    background-color: gray;
+    height: 100px;
+    margin: 20px;
+    clear: both;
+  }
+
+
+  
