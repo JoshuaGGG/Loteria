@@ -7,8 +7,6 @@
   <link rel="stylesheet" href="styles.css">
   <title>Loteria</title>
 </head>
-
-
 <body>
   <div class="hero-board">
     <div class="logo">
@@ -16,15 +14,15 @@
         <img src="images/logo.png">
       </a>
     </div>
+    <div id="board-selection">
     <div class="content2">
       <ul>
         <li>Select Your Game Board</li>
         <li>(Once clicked on, game will start)</li>
       </ul>
-      <div class="board-selection">
       <div class="whole-container">
         <div class="board-container">
-            <div class="board" data-board="1">
+            <div class="board" data-board="1" id="board1">
               <div class="row">
                 <div class="cell">
                   <div class="card">
@@ -163,7 +161,7 @@
             </div>
         </div>
         <div class="board-container">
-            <div class="board" data-board="2">
+            <div class="board" data-board="2" id="board2">
               <div class="row">
                 <div class="cell">
                   <div class="card">
@@ -303,7 +301,7 @@
           </div>
         </div>
         <div class="board-container">
-          <div class="board" data-board="3">
+          <div class="board" data-board="3" id="board3">
             <div class="row">
               <div class="cell">
                 <div class="card">
@@ -442,7 +440,7 @@
           </div> 
         </div>
         <div class="board-container">
-          <div class="board" data-board="4">
+          <div class="board" data-board="4" id="board4">
             <div class="row">
               <div class="cell">
                 <div class="card">
@@ -581,7 +579,7 @@
           </div>
         </div>
         <div class="board-container">
-          <div class="board" data-board="5">
+          <div class="board" data-board="5" id="board5">
             <div class="row">
               <div class="cell">
                 <div class="card">
@@ -720,7 +718,7 @@
           </div>
         </div>
         <div class="board-container">
-          <div class="board" data-board="6">
+          <div class="board" data-board="6" id="board6">
             <div class="row">
               <div class="cell">
                 <div class="card">
@@ -857,13 +855,14 @@
               </div>
             </div>
         </div>
-        <div id="gameplay">
-          <h1>Gameplay</h1>
-        <div id="player-board"></div>
-        <div id="cpu1-board"></div>
-        <div id="cpu2-board"></div>
-        <div id="score"></div>
-        <div id="deck"></div>
+      </div>
+        <div id="gameplay" class="mirage">
+        <div id="player-board">Player Board</div>
+        <div id="cpu1-board" >cpu1-board</div>
+        <div id="cpu2-board">cpu2-board</div>
+        <div id="score">CPU1 You CPU2</div>
+        <div id="deck">deck</div>
+        <div id="bean-placement-token">bean-placement-token</div>
         </div>
             <script src="script.js"></script>
 </body>
