@@ -60,11 +60,3 @@ for (let i = 0; i < boards.length; i++) {
     beanPlacementToken.classList.add("fadeIn");
   });
 }
-
-
-
-
-
-
-
-
