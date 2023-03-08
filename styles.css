@@ -188,7 +188,7 @@
     border-radius: 10px;
   }
   #gameplay{
-  
+   display: none;
   }
   #player-board{
     font-size: 60px;
@@ -230,14 +230,21 @@
     height: 50px;
     margin: 20px;
   }
-  #board-selection{
+  /* #board-selection{
     opacity: 1;
     transition: opacity 0.5s ease-out;
+    display: block;
   }
   #board-selection.hidden{
     opacity: 0;
     display: none;
+  } */
+  .cpu-row{
+    justify-content: center;
+    display: flex;
+    flex-direction:row;
   }
+
 
 
 
