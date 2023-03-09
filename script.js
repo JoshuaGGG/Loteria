@@ -7,6 +7,53 @@ function selectBoard(selectedBoard) {
 
 const boards = document.getElementsByClassName("board");
 
+console.log(boards)
+for (let i = 0; i < boards.length; i++) {
+  boards[i].addEventListener("click", function(e){
+    console.log(e.target.parentNode)
+    removeBoards(e.target.parentNode.parentNode)
+  })
+}
+
+function removeBoards(clickedBoard) {
+  for (let i = 0; i < boards.length; i++) {
+    const element = boards[i];
+    element.parentNode.style.display = "none"
+  }
+  clickedBoard.style.display = "block"
+}
+
+function generateBoards() {
+  var boards = [];
+  for (var i = 0; i < 6; i++) {
+    var board = [];
+    for (var j = 0; j < 25; j++) {
+      var img = Math.floor(Math.random() * 49) + 1;
+      board.push(img);
+    }
+    boards.push(board);
+  }
+  return boards;
+}
+window.onload = function() {
+  var boards = generateBoards();
+  for (var i = 0; i < boards.length; i++) {
+    var board = boards[i];
+    for (var j = 0; j < board.length; j++) {
+      var cellId = "board" + (i + 1) + "-cell" + (j + 1);
+      var cell = document.getElementById(cellId);
+      var imgNumber = board[j];
+      cell.innerHTML = "<img src='images/" + imgNumber + ".png'>";
+    }
+  }
+};
+
+
+
+
+
+
+
 // for (let i = 0; i < boards.length; i++) {
 //   boards[i].addEventListener("click", function(e) {
 //     const selectedBoard = this.getAttribute("data-board");
@@ -59,19 +106,3 @@ const boards = document.getElementsByClassName("board");
 //     console.log(i)
 //   });
 // }
-
-console.log(boards)
-for (let i = 0; i < boards.length; i++) {
-  boards[i].addEventListener("click", function(e){
-    console.log(e.target.parentNode)
-    removeBoards(e.target.parentNode.parentNode)
-  })
-}
-
-function removeBoards(clickedBoard) {
-  for (let i = 0; i < boards.length; i++) {
-    const element = boards[i];
-    element.parentNode.style.display = "none"
-  }
-  clickedBoard.style.display = "block"
-}
