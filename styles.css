@@ -30,11 +30,11 @@ body {
     text-align: center;
 }
 .content a{
+  border: 10px solid blue;
     text-decoration: none;
     display: inline-block;
     color: black;
     font-size: 24px;
-    border: 5px solid blue;
     background-color: yellow;
     padding:14px 70px;
     border-radius: 50px;

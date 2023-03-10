@@ -47,6 +47,17 @@ window.onload = function() {
     }
   }
 };
+function cardDeck()
+{
+  let deck = new Array();
+
+  for (let index = 0; index < array.length; index++) {
+    const element = array[index];
+    
+  }
+}
+
+
 
 
 
@@ -106,21 +117,3 @@ window.onload = function() {
 //     console.log(i)
 //   });
 // }
-// const cpu1BoardElement = document.getElementById("cpu" + cpu1Board + "-board");
-    // if (cpu1BoardElement) {
-    //   cpu1BoardElement.appendChild(cpu1BoardElement.cloneNode(true));
-    // }
-
-    // const cpu2BoardElement = document.getElementById("cpu" + cpu2Board + "-board");
-    // if (cpu2BoardElement) {
-    //   cpu2BoardElement.appendChild(cpu2BoardElement.cloneNode(true));
-    // }
-
-    // score.classList.remove("hidden");
-    // score.classList.add("fadeIn");
-    // deck.classList.remove("hidden");
-    // deck.classList.add("fadeIn");
-
-    // beanPlacementToken.classList.remove("hidden");
-    // beanPlacementToken.classList.add("fadeIn");
-    
