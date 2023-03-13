@@ -26,6 +26,10 @@ body {
 #logo{
     text-align: center;
 }
+.back-button{
+  position: fixed;
+  margin: 10px;
+}
 .content{
     text-align: center;
 }
