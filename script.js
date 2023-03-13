@@ -28,7 +28,8 @@ function generateBoards() {
   for (var i = 0; i < 6; i++) {
     var board = [];
     for (var j = 0; j < 25; j++) {
-      var img = Math.floor(Math.random() * 49) + 1;
+      var num = Math.floor(Math.random() * 49) + 1;
+      let img = `card${num}.png`
       board.push(img);
     }
     boards.push(board);
@@ -102,6 +103,7 @@ const cards = [
   { name: 'wildcard.png', type: 'wildcard' },
   { name: 'takeaway.png', type: 'takeaway' },
   { name: 'wildcard.png', type: 'wildcard' },
+  { name: 'takeaway.png', type: 'takeaway' },
 ];
 
 const deck = document.getElementById("deck");
@@ -109,17 +111,45 @@ const timer = document.getElementById("timer");
 
 const timerDuration = 5000; 
 
-deck = shuffle(deck);
-
 let cardIndex = 0;
 let timerId = setInterval(() => {
-  cardDisplay.src = deck[cardIndex].name;
+  cards.src = deck[cardIndex].name;
   timerBar.style.width = '100%';
   setTimeout(() => {
     timerBar.style.width = '0%';
   }, timerDuration);
   cardIndex = (cardIndex + 1) % deck.length;
 }, timerDuration);
+
+
+function checkForWinner(board){
+  for (let row = 0; row < 5; row++) {
+  let sequence = 0;
+  let player = null;
+  for (let col = 0; col < 5; col++) {
+    let token = board[row][col];
+    if (token === null) {
+      sequence = 0;
+      player = null;
+    } else if (player === null) {
+      sequence = 1;
+      player = token;
+    } else if (token === player) {
+      sequence++;
+      if (sequence === 5) {
+        return player;
+      }
+    } else {
+      sequence = 1;
+      player = token;
+    }
+  }
+}
+}
+
+
+
+  
 
 
 
