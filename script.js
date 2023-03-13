@@ -47,15 +47,79 @@ window.onload = function() {
     }
   }
 };
-function cardDeck()
-{
-  let deck = new Array();
+const cards = [
+  { name: 'card1.png', type: 'normal' },
+  { name: 'card2.png', type: 'normal' },
+  { name: 'card3.png', type: 'normal' },
+  { name: 'card4.png', type: 'normal' },
+  { name: 'card5.png', type: 'normal' },
+  { name: 'card6.png', type: 'normal' },
+  { name: 'card7.png', type: 'normal' },
+  { name: 'card8.png', type: 'normal' },
+  { name: 'card9.png', type: 'normal' },
+  { name: 'card10.png', type: 'normal' },
+  { name: 'card11.png', type: 'normal' },
+  { name: 'card12.png', type: 'normal' },
+  { name: 'card13.png', type: 'normal' },
+  { name: 'card14.png', type: 'normal' },
+  { name: 'card15.png', type: 'normal' },
+  { name: 'card16.png', type: 'normal' },
+  { name: 'card17.png', type: 'normal' },
+  { name: 'card18.png', type: 'normal' },
+  { name: 'card19.png', type: 'normal' },
+  { name: 'card20.png', type: 'normal' },
+  { name: 'card21.png', type: 'normal' },
+  { name: 'card22.png', type: 'normal' },
+  { name: 'card23.png', type: 'normal' },
+  { name: 'card24.png', type: 'normal' },
+  { name: 'card25.png', type: 'normal' },
+  { name: 'card26.png', type: 'normal' },
+  { name: 'card27.png', type: 'normal' },
+  { name: 'card28.png', type: 'normal' },
+  { name: 'card29.png', type: 'normal' },
+  { name: 'card30.png', type: 'normal' },
+  { name: 'card31.png', type: 'normal' },
+  { name: 'card32.png', type: 'normal' },
+  { name: 'card33.png', type: 'normal' },
+  { name: 'card34.png', type: 'normal' },
+  { name: 'card35.png', type: 'normal' },
+  { name: 'card36.png', type: 'normal' },
+  { name: 'card37.png', type: 'normal' },
+  { name: 'card38.png', type: 'normal' },
+  { name: 'card39.png', type: 'normal' },
+  { name: 'card40.png', type: 'normal' },
+  { name: 'card41.png', type: 'normal' },
+  { name: 'card42.png', type: 'normal' },
+  { name: 'card43.png', type: 'normal' },
+  { name: 'card44.png', type: 'normal' },
+  { name: 'card45.png', type: 'normal' },
+  { name: 'card46.png', type: 'normal' },
+  { name: 'card47.png', type: 'normal' },
+  { name: 'card48.png', type: 'normal' },
+  { name: 'card49.png', type: 'normal' },
+  { name: 'wildcard.png', type: 'wildcard' },
+  { name: 'takeaway.png', type: 'takeaway' },
+  { name: 'wildcard.png', type: 'wildcard' },
+  { name: 'takeaway.png', type: 'takeaway' },
+  { name: 'wildcard.png', type: 'wildcard' },
+];
 
-  for (let index = 0; index < array.length; index++) {
-    const element = array[index];
-    
-  }
-}
+const deck = document.getElementById("deck");
+const timer = document.getElementById("timer");
+
+const timerDuration = 5000; 
+
+deck = shuffle(deck);
+
+let cardIndex = 0;
+let timerId = setInterval(() => {
+  cardDisplay.src = deck[cardIndex].name;
+  timerBar.style.width = '100%';
+  setTimeout(() => {
+    timerBar.style.width = '0%';
+  }, timerDuration);
+  cardIndex = (cardIndex + 1) % deck.length;
+}, timerDuration);
 
 
 
@@ -65,55 +129,6 @@ function cardDeck()
 
 
 
-// for (let i = 0; i < boards.length; i++) {
-//   boards[i].addEventListener("click", function(e) {
-//     const selectedBoard = this.getAttribute("data-board");
-//     const boardSelection = document.getElementById("board-selection");
-//     const gameplay = document.getElementById("gameplay");
-//     const playerBoard = document.getElementById("player-board");
-//     const cpu1Board = document.getElementById("cpu1-board");
-//     const cpu2Board = document.getElementById("cpu2-board");
-//     const score = document.getElementById("score");
-//     const deck = document.getElementById("deck");
-//     const beanPlacementToken = document.getElementById("bean-placement-token");
-//     boardSelection.classList.add("hidden", "fadeOut");
-//     gameplay.classList.remove("hidden");
-//     gameplay.classList.add("fadeIn");
 
-//     const selectedBoardElement = document.getElementById(selectedBoard);
-//     if (selectedBoardElement) {
-//       selectedBoardElement.classList.remove("hidden");
-//       selectedBoardElement.classList.add("fadeIn");
-//       playerBoard.appendChild(selectedBoardElement.cloneNode(true));
-//     }
 
-//     const cpu1BoardElement = document.getElementById("cpu" + cpu1Board + "-board");
-//     if (cpu1BoardElement) {
-//       cpu1BoardElement.appendChild(cpu1BoardElement.cloneNode(true));
-//     }
 
-//     const cpu2BoardElement = document.getElementById("cpu" + cpu2Board + "-board");
-//     if (cpu2BoardElement) {
-//       cpu2BoardElement.appendChild(cpu2BoardElement.cloneNode(true));
-//     }
-
-//     score.classList.remove("hidden");
-//     score.classList.add("fadeIn");
-//     deck.classList.remove("hidden");
-//     deck.classList.add("fadeIn");
-
-//     beanPlacementToken.classList.remove("hidden");
-//     beanPlacementToken.classList.add("fadeIn");
-
-//     document.getElementById("gameplay").style.display = "block";
-//     // console.log(e.target.parentNode.parentNode.parentNode.parentNode)
-//     console.log(boards)
-//     for (let j = 0; j < boards.length; j++) {
-//       const element = boards[j];
-//       element.style.display = "none"
-//     }
-//     boards[i].style.display = "block"
-//     console.log(boards)
-//     console.log(i)
-//   });
-// }
