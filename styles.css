@@ -23,7 +23,7 @@ body {
     height: fit-content;  
 }
 
-.logo{
+#logo{
     text-align: center;
 }
 .content{
@@ -64,7 +64,7 @@ body {
     font-size: 20px;
     color: #fff;
 }
-.content2 li{
+#content2 li{
     margin: 0 auto;
     text-align: center;
     justify-content: center;
@@ -191,9 +191,9 @@ body {
     border-radius: 10px;
   }
 
-  /* #gameplay{
+  #gameplay{
     display: none;
-  } */
+  }
 
   #player-board{
     display: flex;
