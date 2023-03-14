@@ -21,6 +21,7 @@ body {
 .hero-board{
   width: 100%;
   height: fit-content;  
+  height: fit-content;  
 }
 
 #logo{
@@ -30,6 +31,11 @@ body {
 #logo > img{
   max-width: 90%;
 }
+.back-button{
+  position: fixed;
+  margin: 10px;
+}
+
 .content{
     text-align: center;
 }
@@ -194,10 +200,9 @@ body {
     object-fit: cover;
     border-radius: 10px;
   }
-
-  #gameplay{
-    display: none;
-  }
+#gameplay{
+  display: none;
+}
 
   #player-board{
     display: flex;

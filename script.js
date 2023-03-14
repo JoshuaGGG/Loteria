@@ -15,13 +15,14 @@ for (let i = 0; i < boards.length; i++) {
   })
 }
 
+// Hides boards, logo, and text, and shows gameplay when a board is selected.
 function removeBoards(clickedBoard) {
   for (let i = 0; i < boards.length; i++) {
     const element = boards[i];
     element.parentNode.style.display = "none"
-    document.getElementById("logo").style.display ="none";
-    document.getElementById("content2").style.display ="none";
-    document.getElementById("gameplay").style.display ="block";
+    document.getElementById("logo").style.display = "none";
+    document.getElementById("content2").style.display = "none";
+    document.getElementById("gameplay").style.display = "block";
   }
   clickedBoard.style.display = "block"
 }
