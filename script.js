@@ -40,7 +40,6 @@ function generateBoards() {
 }
 generateBoards()
 
-
  
 const cards = [
   { name: 'card1.png', type: 'normal' },
@@ -114,8 +113,6 @@ let timerId = setInterval(() => {
   }, timerDuration);
   cardIndex = (cardIndex + 1) % deck.length;
 }, timerDuration);
-
-
 function checkForWinner(board){
   for (let row = 0; row < 5; row++) {
   let sequence = 0;
