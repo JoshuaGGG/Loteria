@@ -19,35 +19,28 @@ function removeBoards(clickedBoard) {
   for (let i = 0; i < boards.length; i++) {
     const element = boards[i];
     element.parentNode.style.display = "none"
+    document.getElementById("logo").style.display ="none";
+    document.getElementById("content2").style.display ="none";
+    document.getElementById("gameplay").style.display ="block";
   }
   clickedBoard.style.display = "block"
 }
 
 function generateBoards() {
-  var boards = [];
-  for (var i = 0; i < 6; i++) {
-    var board = [];
+ for (let k = 0; k < boards.length; k++) {
+  const element = boards[k];
     for (var j = 0; j < 25; j++) {
       var num = Math.floor(Math.random() * 49) + 1;
       let img = `card${num}.png`
-      board.push(img);
+      boards[k].innerHTML += "<img src='images/" + img + "'>";
     }
-    boards.push(board);
-  }
-  return boards;
+ }
+  
 }
-window.onload = function() {
-  var boards = generateBoards();
-  for (var i = 0; i < boards.length; i++) {
-    var board = boards[i];
-    for (var j = 0; j < board.length; j++) {
-      var cellId = "board" + (i + 1) + "-cell" + (j + 1);
-      var cell = document.getElementById(cellId);
-      var imgNumber = board[j];
-      cell.innerHTML = "<img src='images/" + imgNumber + ".png'>";
-    }
-  }
-};
+generateBoards()
+
+
+ 
 const cards = [
   { name: 'card1.png', type: 'normal' },
   { name: 'card2.png', type: 'normal' },

@@ -9,13 +9,18 @@
 </head>
 <body>
   <div class="hero-board">
-    <div class="logo">
+    <div class="back-button">
       <a href="index.html">
+        <img src="images/back.png" width="22%" height="auto">
+      </a>
+    </div>
+    <div id="logo">
+      <!-- <a href="index.html"> -->
         <img src="images/logo.png">
       </a>
     </div>
     <div id="board-selection">
-    <div class="content2">
+    <div id="content2">
       <ul>
         <li>Select Your Game Board</li>
         <li>(Once clicked on, game will start)</li>
@@ -42,33 +47,35 @@
         <div class="board-container">
           <div class="board" data-board="4" id="board4">
             
-                
           </div>
         </div>
         <div class="board-container">
           <div class="board" data-board="5" id="board5">
             
               
-               
           </div>
-        </div>
+          </div>
         <div class="board-container">
           <div class="board" data-board="6" id="board6">
             
-             
+
         </div>
       </div>
     </div>
         <div id="gameplay" class="hidden">
-        <div id="score">CPU1: You: CPU2:</div>
+        <div id="score">
+          <p id="cpu1-score">CPU 1: #</p>
+          <p id="player-score">You: #</p>
+          <p id="cpu2-score">CPU 2: #</p>
+          </div>
         <div class="cpu-row">
-        <div id="cpu1-board" >cpu1-board</div>
-        <div id="deck">deck</div>
+        <div id="cpu1-board" ><img src="images/board1.PNG" alt="board1"></div>
+        <div id="deck"><img src="images/card5.png" alt="ladder"></div>
         <div id="timer"></div>
-        <div id="cpu2-board">cpu2-board</div>
+        <div id="cpu2-board"><img src="images/board2.PNG" alt="board2"></div>
         </div>
-        <div id="player-board">Player Board</div>
-        <div id="bean-placement-token">bean-placement-token</div>
+        <div id="player-board"><img src="images/board3.PNG" alt="board3"></div>
+        <div id="bean-placement-token"><img src="images/bean.png" alt="bean"></div>
         </div>
             <script src="script.js"></script>
 </body>

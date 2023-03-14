@@ -20,11 +20,15 @@ body {
 }
 .hero-board{
   width: 100%;
-    height: fit-content;  
+  height: fit-content;  
 }
 
-.logo{
-    text-align: center;
+#logo{
+    display: flex;
+    justify-content: center;
+}
+#logo > img{
+  max-width: 90%;
 }
 .content{
     text-align: center;
@@ -64,7 +68,7 @@ body {
     font-size: 20px;
     color: #fff;
 }
-.content2 li{
+#content2 li{
     margin: 0 auto;
     text-align: center;
     justify-content: center;
@@ -191,32 +195,26 @@ body {
     border-radius: 10px;
   }
 
-  /* #gameplay{
+  #gameplay{
     display: none;
-  } */
+  }
 
   #player-board{
     display: flex;
     justify-content: center;
   }
   #player-board > img{
-    /* font-size: 60px; */
-    /* background-color: green; */
     height: auto;
     width: 30%;
   }
 
   #cpu1-board > img{
-    /* font-size: 60px; */
-    /* background-color: blue; */
     width: 125px;
     height: auto;
     margin: 20px;
     border-radius: 10px;
   }
   #cpu2-board > img{
-    /* font-size: 60px;
-    background-color: red; */
     width: 125px;
     height: auto;
     margin: 20px;
@@ -235,7 +233,6 @@ body {
     padding: 5px;
   }
   #deck > img {
-    /* background-color: pink; */
     width: 125px;
     height: auto;
     margin: 20px;
@@ -246,7 +243,6 @@ body {
     justify-content: center; 
   }
   #bean-placement-token > img{
-    /* background-color: orange; */
     width: 50px;
     height: auto;
     margin: 20px;
@@ -268,9 +264,17 @@ body {
 
 .board img {
   width: 100%;
+  height: 100%;
 }
 
 .board {
   background-color: pink;
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  grid-template-rows: repeat(5,1fr);
+}
+.back-button{
+  position: fixed;
+  margin: 10px;
 }
 
