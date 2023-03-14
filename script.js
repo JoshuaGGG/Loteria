@@ -1,9 +1,10 @@
-function selectBoard(selectedBoard) {
+function selectCPUBoard(selectedBoard) {
   const allBoards = [1, 2, 3, 4, 5, 6];
   const cpuBoards = allBoards.filter((board) => board !== selectedBoard);
-  const cpu1Board = cpuBoards[0];
-  const cpu2Board = cpuBoards[1];
+  return [cpuBoards[0], cpuBoards[1]];
 }
+
+let [cpu1Board, cpu2Board] = selectCPUBoard(selectedBoard)
 
 const boards = document.getElementsByClassName("board");
 
