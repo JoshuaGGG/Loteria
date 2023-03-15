@@ -1,10 +1,9 @@
-function selectCPUBoard(selectedBoard) {
+function selectBoard(selectedBoard) {
   const allBoards = [1, 2, 3, 4, 5, 6];
   const cpuBoards = allBoards.filter((board) => board !== selectedBoard);
-  return [cpuBoards[0], cpuBoards[1]];
+  const cpu1Board = cpuBoards[0];
+  const cpu2Board = cpuBoards[1];
 }
-
-let [cpu1Board, cpu2Board] = selectCPUBoard(selectedBoard)
 
 const boards = document.getElementsByClassName("board");
 
@@ -15,7 +14,6 @@ for (let i = 0; i < boards.length; i++) {
     removeBoards(e.target.parentNode.parentNode)
   })
 }
-
 // Hides boards, logo, and text, and shows gameplay when a board is selected.
 function removeBoards(clickedBoard) {
   for (let i = 0; i < boards.length; i++) {
@@ -29,19 +27,79 @@ function removeBoards(clickedBoard) {
 }
 
 function generateBoards() {
- for (let k = 0; k < boards.length; k++) {
-  const element = boards[k];
-    for (var j = 0; j < 25; j++) {
-      var num = Math.floor(Math.random() * 49) + 1;
-      let img = `card${num}.png`
-      boards[k].innerHTML += "<img src='images/" + img + "'>";
-    }
- }
+  const boardSize = 25;
+  const totalCards = 49;
+  const similarCardSets = [    [1, 2],
+    [3, 4],
+    [5, 6],
+  ];
   
+  const allCards = [];
+  for (let i = 1; i <= totalCards; i++) {
+    allCards.push(`card${i}.png`);
+  }
+  
+  for (let k = 0; k < boards.length; k++) {
+    const board = boards[k];
+    const usedCards = [];
+    
+    if (k < 3) {
+      const [cardA, cardB] = similarCardSets[k];
+      const cards = shuffleArray([`card${cardA}.png`, `card${cardB}.png`, ...allCards]);
+      
+      for (let j = 0; j < boardSize; j++) {
+        let img = cards.pop();
+        while (usedCards.includes(img)) {
+          img = cards.pop();
+        }
+        board.innerHTML += `<img src="images/${img}">`;
+        usedCards.push(img);
+      }
+    } else {
+      const [cardA, cardB] = similarCardSets[k - 3];
+      const cards = shuffleArray([`card${cardA}.png`, `card${cardB}.png`, ...allCards]);
+      
+      for (let j = 0; j < boardSize; j++) {
+        let img = cards.pop();
+        while (usedCards.includes(img)) {
+          img = cards.pop();
+        }
+        board.innerHTML += `<img src="images/${img}">`;
+        usedCards.push(img);
+      }
+    }
+  }
 }
-generateBoards()
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
 
- 
+generateBoards();
+
+
+
+let selectedBoardIndex = null;
+function selectBoard(boardIndex){
+  selectedBoardIndex = boardIndex;
+  selectComputerBoards();
+}
+
+function selectComputerBoards() {
+  const allBoardIndices = [1, 2, 3, 4, 5, 6];
+  const remainingBoardIndices = allBoardIndices.filter(index => index !== selectedBoardIndex);
+  const cpu1BoardIndex = remainingBoardIndices[Math.floor(Math.random() * 5)];
+  const cpu2BoardIndex = remainingBoardIndices.filter(index => index !== cpu1BoardIndex)[Math.floor(Math.random() * 4)];
+  const cpu1Board = document.querySelector(`[data-board="${cpu1BoardIndex}"]`);
+  const cpu2Board = document.querySelector(`[data-board="${cpu2BoardIndex}"]`);
+
+  cpu1Board.style.display = 'block';
+  cpu2Board.style.display = 'block';
+}
+
 const cards = [
   { name: 'card1.png', type: 'normal' },
   { name: 'card2.png', type: 'normal' },
@@ -100,20 +158,29 @@ const cards = [
   { name: 'takeaway.png', type: 'takeaway' },
 ];
 
-const deck = document.getElementById("deck");
-const timer = document.getElementById("timer");
-
-const timerDuration = 5000; 
-
 let cardIndex = 0;
-let timerId = setInterval(() => {
-  cards.src = deck[cardIndex].name;
+const cardImage = document.getElementById('card-image');
+cardImage.src = 'images/' + cards[cardIndex].name;
+
+const intervalId = setInterval(() => {
+  if (cardIndex >= cards.length) {
+    clearInterval(intervalId);
+    return;
+  }
+  
+  const cardImage = document.getElementById('card-image');
+  cardImage.src = 'images/' + cards[cardIndex].name;
+  cardIndex++;
+  
+  const timerBar = document.getElementById('timer-bar');
   timerBar.style.width = '100%';
+  
   setTimeout(() => {
     timerBar.style.width = '0%';
-  }, timerDuration);
-  cardIndex = (cardIndex + 1) % deck.length;
-}, timerDuration);
+  }, 5000); 
+}, 5000);
+
+
 function checkForWinner(board){
   for (let row = 0; row < 5; row++) {
   let sequence = 0;
@@ -138,6 +205,7 @@ function checkForWinner(board){
   }
 }
 }
+
 
 
 

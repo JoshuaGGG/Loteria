@@ -1,84 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <title>Loteria</title>
-</head>
-<body>
-  <div class="hero-board">
-    <div id="gameplay" class="hidden">
-          <div id="score">
-            <p id="cpu1-score">CPU 1: #</p>
-            <p id="player-score">You: #</p>
-            <p id="cpu2-score">CPU 2: #</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Loteria</title>
+  </head>
+  <body>
+    <div class="hero-board">
+      <div id="gameplay" class="hidden">
+        <div id="score">
+          <p id="cpu1-score">CPU 1: #</p>
+          <p id="player-score">You: #</p>
+          <p id="cpu2-score">CPU 2: #</p>
+        </div>
+        <div class="cpu-row">
+          <div id="cpu1-board">
+            <img src="images/board1.PNG" alt="board1" />
+          </div>
+          <div id="card-container">
+            <img id="card-image" src="" alt="Card image">
+            <div id="timer-container">
+              <div id="timer-bar"></div>
             </div>
-            <div class="cpu-row">
-            <div id="cpu1-board" ><img src="images/board1.PNG" alt="board1"></div>
-            <div id="deck"><img src="images/card5.png" alt="ladder"></div>
-            <div id="timer"></div>
-            <div id="cpu2-board"><img src="images/board2.PNG" alt="board2"></div>
+          </div>          
+          <div id="cpu2-board">
+            <img src="images/board2.PNG" alt="board2" />
+          </div>
+        </div>
+        <div id="player-board"></div>
+        <div id="bean-placement-token">
+          <img src="images/bean.png" alt="bean" />
+        </div>
+      </div>
+      <div class="back-button">
+        <a href="index.html">
+          <img src="images/back.png" width="22%" height="auto" />
+        </a>
+      </div>
+      <div id="logo">
+        <img src="images/logo.png" />
+      </div>
+      <div id="board-selection">
+        <div id="content2">
+          <ul>
+            <li>Select your Game Board</li>
+            <li>(Once clicked on, game will start)</li>
+          </ul>
+        </div>
+        <div class="whole-container">
+          <div class="board-container">
+            <div class="board" class="boards"  data-board="1" id="board1" onclick="selectBoard(1)">
             </div>
-          <div id="player-board"></div>
-          <div id="bean-placement-token"><img src="images/bean.png" alt="bean"></div>
           </div>
-    <div class="back-button">
-      <a href="index.html">
-        <img src="images/back.png" width="22%" height="auto">
-      </a>
-    </div>
-    <div id="logo">
-        <img src="images/logo.png">
-      </a>
-    </div>
-    <div id="board-selection">
-    <div id="content2">
-      <ul>
-        <li>Select your Game Board</li>
-        <li>(Once clicked on, game will start)</li>
-      </ul>
-    </div>
-      <div class="whole-container">
-        <div class="board-container">
-            <div class="board" data-board="1" id="board1">
-              
-                  
+          <div class="board-container">
+            <div class="board" class="boards" data-board="2" id="board2" onclick="selectBoard(2)">
             </div>
-        </div>
-        <div class="board-container">
-            <div class="board" data-board="2" id="board2">
-              
-               
           </div>
-        </div>
-        <div class="board-container">
-          <div class="board" data-board="3" id="board3">
-            
-                
-          </div> 
-        </div>
-        <div class="board-container">
-          <div class="board" data-board="4" id="board4">
-            
+          <div class="board-container">
+            <div class="board" class="boards" data-board="3" id="board3" onclick="selectBoard(3)">
+            </div>
           </div>
-        </div>
-        <div class="board-container">
-          <div class="board" data-board="5" id="board5">
-            
-              
+          <div class="board-container">
+            <div class="board" class="boards" data-board="4" id="board4" onclick="selectBoard(4)">
+            </div>
           </div>
+          <div class="board-container">
+            <div class="board" class="boards" data-board="5" id="board5" onclick="selectBoard(5)">
+            </div>
           </div>
-        <div class="board-container">
-          <div class="board" data-board="6" id="board6">
-            
-
+          <div class="board-container">
+            <div class="board" class="boards" data-board="6" id="board6" onclick="selectBoard(6)">
+            </div>
+          </div>
         </div>
       </div>
     </div>
-        
-            <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
+
 
