@@ -1,9 +1,9 @@
-function selectBoard(selectedBoard) {
-  const allBoards = [1, 2, 3, 4, 5, 6];
-  const cpuBoards = allBoards.filter((board) => board !== selectedBoard);
-  const cpu1Board = cpuBoards[0];
-  const cpu2Board = cpuBoards[1];
-}
+// function selectBoard(selectedBoard) {
+//   const allBoards = [1, 2, 3, 4, 5, 6];
+//   const cpuBoards = allBoards.filter((board) => board !== selectedBoard);
+//   const cpu1Board = cpuBoards[0];
+//   const cpu2Board = cpuBoards[1];
+// }
 
 const boards = document.getElementsByClassName("board");
 
@@ -18,6 +18,7 @@ for (let i = 0; i < boards.length; i++) {
 function removeBoards(clickedBoard) {
   for (let i = 0; i < boards.length; i++) {
     const element = boards[i];
+    console.log(element.parentNode)
     element.parentNode.style.display = "none"
     document.getElementById("logo").style.display = "none";
     document.getElementById("content2").style.display = "none";
@@ -89,15 +90,22 @@ function selectBoard(boardIndex){
 }
 
 function selectComputerBoards() {
+  console.log("testest")
   const allBoardIndices = [1, 2, 3, 4, 5, 6];
   const remainingBoardIndices = allBoardIndices.filter(index => index !== selectedBoardIndex);
   const cpu1BoardIndex = remainingBoardIndices[Math.floor(Math.random() * 5)];
   const cpu2BoardIndex = remainingBoardIndices.filter(index => index !== cpu1BoardIndex)[Math.floor(Math.random() * 4)];
-  const cpu1Board = document.querySelector(`[data-board="${cpu1BoardIndex}"]`);
-  const cpu2Board = document.querySelector(`[data-board="${cpu2BoardIndex}"]`);
+  // const boardContainter = document.querySelector(`[data-board="${cpu1BoardIndex}"]`).parentElement;
+  const cpu1Board = document.querySelector(`[data-board="${cpu1BoardIndex}"]`).parentElement;
+  const cpu2Board = document.querySelector(`[data-board="${cpu2BoardIndex}"]`).parentElement;
+
+
+  // boardContainter.style.display = "block";
 
   cpu1Board.style.display = 'block';
   cpu2Board.style.display = 'block';
+  console.log(cpu)
+  // console.log(boardContainter)  
 }
 
 const cards = [
@@ -177,8 +185,8 @@ const intervalId = setInterval(() => {
   
   setTimeout(() => {
     timerBar.style.width = '0%';
-  }, 5000); 
-}, 5000);
+  }, 2000); 
+}, 3000);
 
 
 function checkForWinner(board){
@@ -204,6 +212,10 @@ function checkForWinner(board){
     }
   }
 }
+}
+function dragMouseDown(e){
+  e.preventDefault()
+  
 }
 
 
