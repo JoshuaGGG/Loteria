@@ -1,9 +1,44 @@
-// function selectBoard(selectedBoard) {
-//   const allBoards = [1, 2, 3, 4, 5, 6];
-//   const cpuBoards = allBoards.filter((board) => board !== selectedBoard);
-//   const cpu1Board = cpuBoards[0];
-//   const cpu2Board = cpuBoards[1];
-// }
+function selectBoard(selectedBoard) {
+  const allBoards = [1, 2, 3, 4, 5, 6];
+  const index = allBoards.indexOf(selectedBoard);
+  allBoards.splice(index, 1);
+
+  const cpu1Index = Math.floor(Math.random() * allBoards.length);
+  const cpu1Board = allBoards[cpu1Index];
+  allBoards.splice(cpu1Index, 1);
+
+  const cpu2Index = Math.floor(Math.random() * (allBoards.length - 1));
+  const cpu2Board = allBoards[cpu2Index];
+  allBoards.splice(cpu2Index, 1);
+
+  document.getElementById("player-board").innerHTML = `<img src="images/board${selectedBoard}.PNG" alt="board${selectedBoard}" />`;
+  document.getElementById("cpu1-board").innerHTML = `<img src="images/board${cpu1Board}.PNG" alt="board${cpu1Board}" />`;
+  document.getElementById("cpu2-board").innerHTML = `<img src="images/board${cpu2Board}.PNG" alt="board${cpu2Board}" />`;
+
+  const board = document.getElementById("player-board");
+  board.innerHTML = `<img src="images/board${selectedBoard}.PNG" alt="board${selectedBoard}" />`;
+
+  board.addEventListener("dragover", function(e) {
+    e.preventDefault();
+  });
+
+  board.addEventListener("drop", function(e) {
+    e.preventDefault();
+    const token = document.getElementById("selected-token");
+    token.parentNode.removeChild(token);
+    board.appendChild(token);
+  });
+
+  const tokens = document.querySelectorAll("#bean-placement-token img");
+  for (let i = 0; i < tokens.length; i++) {
+    const token = tokens[i];
+    token.addEventListener("dragstart", function(e) {
+      e.dataTransfer.setData("text/plain", "");
+      e.dataTransfer.setDragImage(e.target, 0, 0);
+      token.setAttribute("id", "selected-token");
+    });
+  }
+}
 
 const boards = document.getElementsByClassName("board");
 
@@ -18,14 +53,15 @@ for (let i = 0; i < boards.length; i++) {
 function removeBoards(clickedBoard) {
   for (let i = 0; i < boards.length; i++) {
     const element = boards[i];
-    console.log(element.parentNode)
-    element.parentNode.style.display = "none"
+    element.parentNode.style.display = "none";
     document.getElementById("logo").style.display = "none";
     document.getElementById("content2").style.display = "none";
     document.getElementById("gameplay").style.display = "block";
   }
-  clickedBoard.style.display = "block"
+  clickedBoard.style.display = "block";
+  selectBoard(clickedBoard.dataset.board);
 }
+
 
 function generateBoards() {
   const boardSize = 25;
@@ -90,22 +126,14 @@ function selectBoard(boardIndex){
 }
 
 function selectComputerBoards() {
-  console.log("testest")
   const allBoardIndices = [1, 2, 3, 4, 5, 6];
   const remainingBoardIndices = allBoardIndices.filter(index => index !== selectedBoardIndex);
   const cpu1BoardIndex = remainingBoardIndices[Math.floor(Math.random() * 5)];
   const cpu2BoardIndex = remainingBoardIndices.filter(index => index !== cpu1BoardIndex)[Math.floor(Math.random() * 4)];
-  // const boardContainter = document.querySelector(`[data-board="${cpu1BoardIndex}"]`).parentElement;
   const cpu1Board = document.querySelector(`[data-board="${cpu1BoardIndex}"]`).parentElement;
   const cpu2Board = document.querySelector(`[data-board="${cpu2BoardIndex}"]`).parentElement;
-
-
-  // boardContainter.style.display = "block";
-
   cpu1Board.style.display = 'block';
-  cpu2Board.style.display = 'block';
-  console.log(cpu)
-  // console.log(boardContainter)  
+  cpu2Board.style.display = 'block'; 
 }
 
 const cards = [
@@ -188,6 +216,72 @@ const intervalId = setInterval(() => {
   }, 2000); 
 }, 3000);
 
+function drag(event) {
+  event.dataTransfer.setData("text", event.target.id);
+}
+function allowDrop(event) {
+  event.preventDefault();
+}
+function drop(event) {
+  event.preventDefault();
+  var data = event.dataTransfer.getData("text");
+  var bean = document.getElementById(data);
+  event.target.appendChild(bean);
+}
+
+const spaces = document.querySelectorAll('.board-space');
+spaces.forEach(space => {
+  space.addEventListener('click', () => {
+    const spaceIndex = Array.from(spaces).indexOf(space);
+    const boardIndex = currentPlayer;
+    if (currentCard.name === loteria[spaceIndex].name) {
+      updateBoard(boards[boardIndex], currentCard, spaceIndex);
+      if (checkWin(boards[boardIndex])) {
+        winner = currentPlayer;
+        endGame();
+      }
+      currentPlayer = (currentPlayer + 1) % numPlayers;
+      showCurrentPlayer();
+    }
+  });
+});
+
+function handleWildcard() {
+  for (let i = 0; i < numPlayers; i++) {
+    const board = boards[i];
+    for (let j = 0; j < board.length; j++) {
+      if (board[j] === 0) {
+        board[j] = 1;
+        const space = spaces[j];
+        const bean = document.createElement('img');
+        bean.src = 'img/bean.png';
+        space.appendChild(bean);
+      }
+    }
+  }
+}
+
+function handleTakeaway() {
+  for (let i = 0; i < numPlayers; i++) {
+    const board = boards[i];
+    for (let j = 0; j < board.length; j++) {
+      if (board[j] === 1) {
+        board[j] = 0;
+        const space = spaces[j];
+        space.innerHTML = '';
+      }
+    }
+  }
+}
+
+function updateBoard(board, card, spaceIndex) {
+  board[spaceIndex] = 1;
+  const space = spaces[spaceIndex];
+  const bean = document.createElement('img');
+  bean.src = 'img/bean.png';
+  space.appendChild(bean);
+}
+
 
 function checkForWinner(board){
   for (let row = 0; row < 5; row++) {
@@ -212,10 +306,6 @@ function checkForWinner(board){
     }
   }
 }
-}
-function dragMouseDown(e){
-  e.preventDefault()
-  
 }
 
 

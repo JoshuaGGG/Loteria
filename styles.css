@@ -218,18 +218,42 @@ body {
     margin: 20px;
     border-radius: 10px;
   }
-  #bean-placement-token{
-    background-color: #00c6ff;
-    border-radius: 50px;
-    width: 10%;
-    height: 20vh;
+  /* #bean-placement-token {
+    display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
+    width: 20%;
+    height: 150px;
+    margin: 20px auto;
+    border: 5px solid #2c3e50;
+    background-color: #34495e;
+    border-radius: 10px;
+    padding: 10px;
   }
-  #bean-placement-token > img{
-    margin: 0 auto;
-    width: 70px;
+  
+  #bean-placement-token img {
+    width: 50px;
+    height: 50px;
+    margin: 0 20px;
+  } */
+  #bean-placement-token {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 150px;
+    margin: 20px auto;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #F4A261;
+    border: 5px solid #E76F51;
+    border-radius: 15px;
+    box-shadow: 5px 5px #E76F51;
+  }
+  #bean-placement-token img {
+    width: 50px;
+    height: 50px;
+    margin: 0 20px;
   }
   #card-container{
     position: relative;
