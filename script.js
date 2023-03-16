@@ -1,22 +1,9 @@
 function selectBoard(selectedBoard) {
-  const allBoards = [1, 2, 3, 4, 5, 6];
-  const index = allBoards.indexOf(selectedBoard);
-  allBoards.splice(index, 1);
-
-  const cpu1Index = Math.floor(Math.random() * allBoards.length);
-  const cpu1Board = allBoards[cpu1Index];
-  allBoards.splice(cpu1Index, 1);
-
-  const cpu2Index = Math.floor(Math.random() * (allBoards.length - 1));
-  const cpu2Board = allBoards[cpu2Index];
-  allBoards.splice(cpu2Index, 1);
-
-  document.getElementById("player-board").innerHTML = `<img src="images/board${selectedBoard}.PNG" alt="board${selectedBoard}" />`;
-  document.getElementById("cpu1-board").innerHTML = `<img src="images/board${cpu1Board}.PNG" alt="board${cpu1Board}" />`;
-  document.getElementById("cpu2-board").innerHTML = `<img src="images/board${cpu2Board}.PNG" alt="board${cpu2Board}" />`;
+  let allBoards = [1, 2, 3, 4, 5, 6];
+  allBoards.splice(selectedBoard-1, 1);
+  selectComputerBoards(selectedBoard -1)
 
   const board = document.getElementById("player-board");
-  board.innerHTML = `<img src="images/board${selectedBoard}.PNG" alt="board${selectedBoard}" />`;
 
   board.addEventListener("dragover", function(e) {
     e.preventDefault();
@@ -40,15 +27,16 @@ function selectBoard(selectedBoard) {
   }
 }
 
-const boards = document.getElementsByClassName("board");
 
-console.log(boards)
+// creates event listener for every board
+const boards = document.getElementsByClassName("board");
 for (let i = 0; i < boards.length; i++) {
   boards[i].addEventListener("click", function(e){
-    console.log(e.target.parentNode)
-    removeBoards(e.target.parentNode.parentNode)
+    removeBoards(e.target.parentNode.parentNode);
+    selectBoard(e.target.parentNode.id.slice(-1));
   })
 }
+
 // Hides boards, logo, and text, and shows gameplay when a board is selected.
 function removeBoards(clickedBoard) {
   for (let i = 0; i < boards.length; i++) {
@@ -59,9 +47,8 @@ function removeBoards(clickedBoard) {
     document.getElementById("gameplay").style.display = "block";
   }
   clickedBoard.style.display = "block";
-  selectBoard(clickedBoard.dataset.board);
+  removeEventListener("onclick",removeBoards)
 }
-
 
 function generateBoards() {
   const boardSize = 25;
@@ -117,21 +104,24 @@ function shuffleArray(array) {
 
 generateBoards();
 
-
-
-let selectedBoardIndex = null;
-function selectBoard(boardIndex){
-  selectedBoardIndex = boardIndex;
-  selectComputerBoards();
-}
-
-function selectComputerBoards() {
+// creates random numbers for the cpu selected boards
+function selectComputerBoards(selectedBoardIndex) {
+  console.log(selectedBoardIndex)
   const allBoardIndices = [1, 2, 3, 4, 5, 6];
-  const remainingBoardIndices = allBoardIndices.filter(index => index !== selectedBoardIndex);
-  const cpu1BoardIndex = remainingBoardIndices[Math.floor(Math.random() * 5)];
-  const cpu2BoardIndex = remainingBoardIndices.filter(index => index !== cpu1BoardIndex)[Math.floor(Math.random() * 4)];
-  const cpu1Board = document.querySelector(`[data-board="${cpu1BoardIndex}"]`).parentElement;
-  const cpu2Board = document.querySelector(`[data-board="${cpu2BoardIndex}"]`).parentElement;
+  allBoardIndices.splice(selectedBoardIndex, 1);
+
+  const cpu1BoardNum = allBoardIndices[Math.floor(Math.random() * 5)];
+  const cpu1BoardIndex = allBoardIndices.indexOf(cpu1BoardNum)
+  allBoardIndices.splice(cpu1BoardIndex, 1);
+
+  const cpu2BoardNum = allBoardIndices[Math.floor(Math.random() * 4)];
+  const cpu2BoardIndex = allBoardIndices.indexOf(cpu2BoardNum)
+  allBoardIndices.splice(cpu2BoardIndex, 1);
+
+  console.log("cpu1: " + cpu1BoardNum)
+  console.log("cpu2: " + cpu2BoardNum)
+  const cpu1Board = document.getElementById(`board${cpu1BoardNum}`).parentElement;
+  const cpu2Board = document.getElementById(`board${cpu2BoardNum}`).parentElement;
   cpu1Board.style.display = 'block';
   cpu2Board.style.display = 'block'; 
 }
@@ -307,6 +297,7 @@ function checkForWinner(board){
   }
 }
 }
+
 
 
 
