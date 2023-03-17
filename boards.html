@@ -8,6 +8,14 @@
     <title>Loteria</title>
   </head>
   <body>
+    <audio id="bgm" src="background.mp3" loop volume="0.5"></audio>
+    <audio id="game-over" src="images/Gameover.mp3"></audio>
+    <audio id="win" src="images/Win.mp3"></audio>
+    <div class="back-button">
+      <a href="index.html">
+        <img src="images/back.png" width="22%" height="auto" />
+      </a>
+    </div>
     <div class="hero-board">
       <div id="gameplay" class="hidden">
         <div id="score">
@@ -28,17 +36,15 @@
           </div>
         </div>
         <div id="player-board"></div>
-        <div id="bean-placement-token">
-          <img src="images/bean.png" alt="bean" draggable="true" id="bean1" ondragstart="drag(event)"/>
-          <img src="images/bean.png" alt="bean" draggable="true" id="bean2" ondragstart="drag(event)"/>
-          <img src="images/bean.png" alt="bean" draggable="true" id="bean3" ondragstart="drag(event)"/>
-          <img src="images/bean.png" alt="bean" draggable="true" id="bean4" ondragstart="drag(event)"/>
+        <div id="wholebean">
+          <img src="images/bean.png" alt="bean" draggable="true" id="bean"  class="bean-piece" ondragstart="drag(event)"/>
+          <img src="images/bean.png" alt="bean" draggable="true" id="bean"  class="bean-piece" ondragstart="drag(event)"/>
+          <img src="images/bean.png" alt="bean" draggable="true" id="bean"  class="bean-piece" ondragstart="drag(event)"/>
+          <img src="images/bean.png" alt="bean" draggable="true" id="bean"  class="bean-piece" ondragstart="drag(event)"/>
+          <img src="images/bean.png" alt="bean" draggable="true" id="bean"  class="bean-piece" ondragstart="drag(event)"/>
+          <img src="images/bean.png" alt="bean" draggable="true" id="bean"  class="bean-piece" ondragstart="drag(event)"/>
+          <img src="images/bean.png" alt="bean" draggable="true" id="bean"  class="bean-piece" ondragstart="drag(event)"/>
         </div>        
-      </div>
-      <div class="back-button">
-        <a href="index.html">
-          <img src="images/back.png" width="22%" height="auto" />
-        </a>
       </div>
       <div id="logo">
         <img src="images/logo.png" />

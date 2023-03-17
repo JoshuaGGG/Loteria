@@ -218,29 +218,19 @@ body {
     margin: 20px;
     border-radius: 10px;
   }
-  /* #bean-placement-token {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 20%;
-    height: 150px;
-    margin: 20px auto;
-    border: 5px solid #2c3e50;
-    background-color: #34495e;
-    border-radius: 10px;
-    padding: 10px;
+  .bean-piece {
+    border-radius: 20%;
+    background-color: #f4d69f;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
   }
   
-  #bean-placement-token img {
-    width: 50px;
-    height: 50px;
-    margin: 0 20px;
-  } */
-  #bean-placement-token {
+  #wholebean {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 20%;
+    width: 40%;
     height: 150px;
     margin: 20px auto;
     border-radius: 10px;
@@ -250,7 +240,7 @@ body {
     border-radius: 15px;
     box-shadow: 5px 5px #E76F51;
   }
-  #bean-placement-token img {
+  #wholebean img {
     width: 50px;
     height: 50px;
     margin: 0 20px;

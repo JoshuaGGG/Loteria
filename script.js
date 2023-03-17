@@ -4,30 +4,7 @@ function selectBoard(selectedBoard) {
   selectComputerBoards(selectedBoard -1)
 
   const board = document.getElementById("player-board");
-
-  board.addEventListener("dragover", function(e) {
-    e.preventDefault();
-  });
-
-  board.addEventListener("drop", function(e) {
-    e.preventDefault();
-    const token = document.getElementById("selected-token");
-    token.parentNode.removeChild(token);
-    board.appendChild(token);
-  });
-
-  const tokens = document.querySelectorAll("#bean-placement-token img");
-  for (let i = 0; i < tokens.length; i++) {
-    const token = tokens[i];
-    token.addEventListener("dragstart", function(e) {
-      e.dataTransfer.setData("text/plain", "");
-      e.dataTransfer.setDragImage(e.target, 0, 0);
-      token.setAttribute("id", "selected-token");
-    });
-  }
 }
-
-
 // creates event listener for every board
 const boards = document.getElementsByClassName("board");
 for (let i = 0; i < boards.length; i++) {
@@ -48,8 +25,11 @@ function removeBoards(clickedBoard) {
   }
   clickedBoard.style.display = "block";
   removeEventListener("onclick",removeBoards)
+
+  playBackgroundMusic();
 }
 
+//generates six random boards with no repeating cards in one board//
 function generateBoards() {
   const boardSize = 25;
   const totalCards = 49;
@@ -206,111 +186,195 @@ const intervalId = setInterval(() => {
   }, 2000); 
 }, 3000);
 
+//let player place token or no token keep track array cards//
+let usedCards = []; // array to keep track of used cards
+
+function displayCard() {
+  const card = cards[Math.floor(Math.random() * cards.length)];
+  const index = usedCards.indexOf(card.name); // check if card was already used
+  if (index !== -1) {
+    usedCards.splice(index, 1); // remove card from usedCards if it was already used
+  }
+  usedCards.push(card.name); // add card to usedCards
+  const cardImg = document.createElement("img");
+  cardImg.src = "images/" + card.name;
+  document.getElementById("card-display").appendChild(cardImg);
+
+  // add event listener to card image to allow player to place a token on the board
+  cardImg.addEventListener("click", function() {
+    const selectedImg = document.querySelector(".board img[src='images/" + card.name + "']");
+    if (!selectedImg) {
+      alert("Error: no matching image on board");
+    } else {
+      const token = document.createElement("div");
+      token.classList.add("token");
+      selectedImg.parentElement.appendChild(token);
+      checkWin(selectedImg);
+    }
+  });
+}
+
+
+
+//bean img show up still not working//
+const bean = document.getElementById('bean');
+const grid = document.querySelectorAll(".board")
+const scoreDisplay = document.querySelector("#score")
+var beingDragged;
+
+
+bean.addEventListener("dragstart", dragStart)
+
+grid.forEach(square => {
+  square.addEventListener("drop", dragOver)
+  square.addEventListener("drop", dragDrop)
+  square.addEventListener("dragover", allowDrop)
+})
+function dragging(){
+  scoreDisplay.textContent = "You are dragging a " + beingDragged.id
+}
+
 function drag(event) {
   event.dataTransfer.setData("text", event.target.id);
 }
-function allowDrop(event) {
-  event.preventDefault();
-}
+
 function drop(event) {
   event.preventDefault();
   var data = event.dataTransfer.getData("text");
-  var bean = document.getElementById(data);
-  event.target.appendChild(bean);
+  event.target.appendChild(document.getElementById(data));
 }
 
-const spaces = document.querySelectorAll('.board-space');
-spaces.forEach(space => {
-  space.addEventListener('click', () => {
-    const spaceIndex = Array.from(spaces).indexOf(space);
-    const boardIndex = currentPlayer;
-    if (currentCard.name === loteria[spaceIndex].name) {
-      updateBoard(boards[boardIndex], currentCard, spaceIndex);
-      if (checkWin(boards[boardIndex])) {
-        winner = currentPlayer;
-        endGame();
-      }
-      currentPlayer = (currentPlayer + 1) % numPlayers;
-      showCurrentPlayer();
-    }
-  });
-});
+function dragStart(e) {
+  beingDragged = e.target
+}
 
-function handleWildcard() {
-  for (let i = 0; i < numPlayers; i++) {
-    const board = boards[i];
-    for (let j = 0; j < board.length; j++) {
-      if (board[j] === 0) {
-        board[j] = 1;
-        const space = spaces[j];
-        const bean = document.createElement('img');
-        bean.src = 'img/bean.png';
-        space.appendChild(bean);
-      }
+function dragOver(e) {
+  e.preventDefault()
+}
+
+function dragDrop(e) {
+  e.target.append(beingDragged)
+}
+
+function allowDrop(e) {
+  e.preventDefault();
+}
+
+
+
+
+//check win//
+function checkWin(boardId) {
+  const board = document.getElementById(boardId);
+  const squares = board.getElementsByTagName("td");
+  const numSquares = squares.length;
+  const numRows = Math.sqrt(numSquares);
+  const boardArray = Array.from(squares).map(square => square.textContent);
+
+  // Check rows
+  for (let i = 0; i < numSquares; i += numRows) {
+    const row = boardArray.slice(i, i + numRows);
+    if (row.every(elem => elem === "X")) {
+      return "X";
+    } else if (row.every(elem => elem === "O")) {
+      return "O";
     }
+  }
+
+  // Check columns
+  for (let i = 0; i < numRows; i++) {
+    const col = [];
+    for (let j = i; j < numSquares; j += numRows) {
+      col.push(boardArray[j]);
+    }
+    if (col.every(elem => elem === "X")) {
+      return "X";
+    } else if (col.every(elem => elem === "O")) {
+      return "O";
+    }
+  }
+
+  // Check diagonal from top left to bottom right
+  const diagonal1 = [];
+  for (let i = 0; i < numSquares; i += numRows + 1) {
+    diagonal1.push(boardArray[i]);
+  }
+  if (diagonal1.every(elem => elem === "X")) {
+    return "X";
+  } else if (diagonal1.every(elem => elem === "O")) {
+    return "O";
+  }
+
+  // Check diagonal from top right to bottom left
+  const diagonal2 = [];
+  for (let i = numRows - 1; i < numSquares - 1; i += numRows - 1) {
+    diagonal2.push(boardArray[i]);
+  }
+  if (diagonal2.every(elem => elem === "X")) {
+    return "X";
+  } else if (diagonal2.every(elem => elem === "O")) {
+    return "O";
+  }
+
+  // No winner yet
+  return null;
+}
+
+const winner = checkWin("myBoard");
+if (winner) {
+  alert(`Congratulations, player ${winner}! You won!`);
+}
+
+
+
+
+function takeAwayToken(board) {
+  const tokens = board.querySelectorAll(".token");
+  if (tokens.length > 0) {
+    const tokenIndex = Math.floor(Math.random() * tokens.length);
+    tokens[tokenIndex].parentNode.removeChild(tokens[tokenIndex]);
   }
 }
 
-function handleTakeaway() {
-  for (let i = 0; i < numPlayers; i++) {
-    const board = boards[i];
-    for (let j = 0; j < board.length; j++) {
-      if (board[j] === 1) {
-        board[j] = 0;
-        const space = spaces[j];
-        space.innerHTML = '';
-      }
+function placeTokenAnywhere(board) {
+  const cells = board.querySelectorAll(".cell");
+  const emptyCells = [];
+  for (let i = 0; i < cells.length; i++) {
+    if (!cells[i].querySelector(".token")) {
+      emptyCells.push(cells[i]);
     }
+  }
+  if (emptyCells.length > 0) {
+    const cellIndex = Math.floor(Math.random() * emptyCells.length);
+    emptyCells[cellIndex].innerHTML = '<div class="token"></div>';
   }
 }
 
-function updateBoard(board, card, spaceIndex) {
-  board[spaceIndex] = 1;
-  const space = spaces[spaceIndex];
-  const bean = document.createElement('img');
-  bean.src = 'img/bean.png';
-  space.appendChild(bean);
+let gameEnded = false; // variable to keep track of whether the game has ended
+
+function playBackgroundMusic() {
+  const bgm = document.getElementById("bgm");
+  bgm.play();
 }
 
+function playGameOverMusic() {
+  const gameOverMusic = document.getElementById("game-over");
+  gameOverMusic.play();
+}
 
-function checkForWinner(board){
-  for (let row = 0; row < 5; row++) {
-  let sequence = 0;
-  let player = null;
-  for (let col = 0; col < 5; col++) {
-    let token = board[row][col];
-    if (token === null) {
-      sequence = 0;
-      player = null;
-    } else if (player === null) {
-      sequence = 1;
-      player = token;
-    } else if (token === player) {
-      sequence++;
-      if (sequence === 5) {
-        return player;
-      }
-    } else {
-      sequence = 1;
-      player = token;
-    }
+function playVictoryMusic() {
+  const victoryMusic = document.getElementById("win");
+  victoryMusic.play();
+}
+
+function endGame(win) {
+  gameEnded = true;
+  if (win) {
+    playVictoryMusic();
+  } else {
+    playGameOverMusic();
   }
 }
-}
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
 
 
 
