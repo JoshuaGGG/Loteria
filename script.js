@@ -33,7 +33,8 @@ function removeBoards(clickedBoard) {
 function generateBoards() {
   const boardSize = 25;
   const totalCards = 49;
-  const similarCardSets = [    [1, 2],
+  const similarCardSets = [    
+    [1, 2],
     [3, 4],
     [5, 6],
   ];
@@ -218,6 +219,9 @@ function displayCard() {
 
 //bean img show up still not working//
 const bean = document.getElementById('bean');
+
+const beanPiece = document.querySelectorAll(".bean-piece")
+console.log(beanPiece)
 const grid = document.querySelectorAll(".board")
 const scoreDisplay = document.querySelector("#score")
 var beingDragged;
@@ -232,36 +236,40 @@ grid.forEach(square => {
 })
 function dragging(){
   scoreDisplay.textContent = "You are dragging a " + beingDragged.id
+  console.log(dragging)
 }
 
 function drag(event) {
   event.dataTransfer.setData("text", event.target.id);
+  console.log(event)
 }
 
 function drop(event) {
   event.preventDefault();
   var data = event.dataTransfer.getData("text");
   event.target.appendChild(document.getElementById(data));
+  console.log(event)
 }
 
 function dragStart(e) {
   beingDragged = e.target
+  console.log(dragStart)
 }
 
 function dragOver(e) {
   e.preventDefault()
+  console.log(dragOver)
 }
 
 function dragDrop(e) {
   e.target.append(beingDragged)
+  console.log(dragDrop)
 }
 
 function allowDrop(e) {
   e.preventDefault();
+  e.target.classList.remove('drag-over');
 }
-
-
-
 
 //check win//
 function checkWin(boardId) {
