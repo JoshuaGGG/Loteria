@@ -217,6 +217,7 @@ body {
     height: auto;
     margin: 20px;
     border-radius: 10px;
+    
   }
   .bean-piece {
     border-radius: 20%;
@@ -320,9 +321,56 @@ body {
 .boards{
   display: none;
 }
-.back-button{
-  position: fixed;
-  margin: 10px;
+
+#win-display, #lose-display {
+  display: none;
+  background-color: #fdff84;
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-top: 50px;
+  height: auto;
+  border-radius: 25px;
 }
-
-
+#win-display > img {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  padding: 30px;
+  padding-left: 30%;
+  padding-right: 30%;
+}
+#lose-display > img {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  padding: 30px;
+  padding-left: 0%;
+  padding-right: 0%;
+}
+#game-over-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-bottom: 30px;
+}
+#play-again-button, #main-menu-button {
+  border: blue solid 5px;
+  padding: 2em;
+  padding-left: 3em;
+  padding-right: 3em;
+  border-radius: 50px;
+}
+#play-again-button > a, #main-menu-button > a {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 3em;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+#play-again-button a:hover, #main-menu-button a:hover {
+  -webkit-text-stroke:2px #fff;
+  background: red;
+  color: transparent;
+}

@@ -379,11 +379,18 @@ function endGame(win) {
   gameEnded = true;
   if (win) {
     playVictoryMusic();
+    document.getElementById("win-display").style.display = "block";
+    document.getElementById("card-container").style.display = "none";
+    document.getElementById("wholebean").style.display = "none";
   } else {
     playGameOverMusic();
+    document.getElementById("lose-display").style.display = "block";
+    document.getElementById("card-container").style.display = "none";
+    document.getElementById("wholebean").style.display = "none";
   }
 }
 
 
 
 
+    
