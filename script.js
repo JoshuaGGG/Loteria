@@ -1,3 +1,5 @@
+let inPlay = false;
+
 function selectBoard(selectedBoard) {
   let allBoards = [1, 2, 3, 4, 5, 6];
   allBoards.splice(selectedBoard-1, 1);
@@ -9,8 +11,10 @@ function selectBoard(selectedBoard) {
 const boards = document.getElementsByClassName("board");
 for (let i = 0; i < boards.length; i++) {
   boards[i].addEventListener("click", function(e){
-    removeBoards(e.target.parentNode.parentNode);
-    selectBoard(e.target.parentNode.id.slice(-1));
+    if (inPlay == false) {
+      removeBoards(e.target.parentNode.parentNode);
+      selectBoard(e.target.parentNode.id.slice(-1));
+    }
   })
 }
 
@@ -22,9 +26,10 @@ function removeBoards(clickedBoard) {
     document.getElementById("logo").style.display = "none";
     document.getElementById("content2").style.display = "none";
     document.getElementById("gameplay").style.display = "block";
+    inPlay = true;
   }
   clickedBoard.style.display = "block";
-  removeEventListener("onclick",removeBoards)
+  // removeEventListener("onclick",removeBoards)
 
   playBackgroundMusic();
 }
