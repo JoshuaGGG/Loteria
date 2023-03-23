@@ -62,7 +62,9 @@ function generateBoards() {
         while (usedCards.includes(img)) {
           img = cards.pop();
         }
-        board.innerHTML += `<img src="images/${img}">`;
+        board.innerHTML += `<div style="background-image: url('images/${img}'); width: 290px; height: 180px;  border-radius: 10px; box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1); max-width: 100px; background-size:cover;">
+        <img style="display: none;" src="images/${img}">
+       </div>`;
         usedCards.push(img);
       }
     } else {
@@ -74,7 +76,9 @@ function generateBoards() {
         while (usedCards.includes(img)) {
           img = cards.pop();
         }
-        board.innerHTML += `<img src="images/${img}">`;
+        board.innerHTML += `<div style="background-image: url('images/${img}'); width: 290px; height: 180px;  border-radius: 10px; box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1); max-width: 100px; background-size:cover;">
+        <img style="display: none;" src="images/${img}">
+       </div>`;
         usedCards.push(img);
       }
     }
@@ -250,10 +254,12 @@ function drag(event) {
 }
 
 function drop(event) {
-  event.preventDefault();
-  var data = event.dataTransfer.getData("text");
-  event.target.appendChild(document.getElementById(data));
-  console.log(event)
+ event.preventDefault();
+ const image = document.createElement("token4.png");
+ image.src = event.target.src;
+ image.draggable = true;
+ image.ondragstart = drag;
+ event.target.parentNode.appendChild(image); 
 }
 
 function dragStart(e) {

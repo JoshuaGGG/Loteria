@@ -152,7 +152,7 @@ body {
     align-items: center;
     border: 10px solid black;
     box-sizing: border-box;
-    max-width: 500px;
+    max-width: 1000px;
     margin: 16px;
     animation: rgbGamingEffect 5s ease-in-out infinite;
     border-image: linear-gradient(to right,red, green, blue);
@@ -220,18 +220,15 @@ body {
     
   }
   .bean-piece {
-    border-radius: 20%;
-    background-color: #f4d69f;
-    display: inline-block;
-    position: relative;
-    z-index: 1;
+    width: 400px;
+    height: 400px;
   }
   
   #wholebean {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40%;
+    width: 15%;
     height: 150px;
     margin: 20px auto;
     border-radius: 10px;
