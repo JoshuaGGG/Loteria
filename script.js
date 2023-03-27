@@ -95,7 +95,6 @@ generateBoards();
 
 // creates random numbers for the cpu selected boards
 function selectComputerBoards(selectedBoardIndex) {
-  console.log(selectedBoardIndex)
   const allBoardIndices = [1, 2, 3, 4, 5, 6];
   allBoardIndices.splice(selectedBoardIndex, 1);
 
@@ -107,8 +106,6 @@ function selectComputerBoards(selectedBoardIndex) {
   const cpu2BoardIndex = allBoardIndices.indexOf(cpu2BoardNum)
   allBoardIndices.splice(cpu2BoardIndex, 1);
 
-  console.log("cpu1: " + cpu1BoardNum)
-  console.log("cpu2: " + cpu2BoardNum)
   const cpu1Board = document.getElementById(`board${cpu1BoardNum}`).parentElement;
   const cpu2Board = document.getElementById(`board${cpu2BoardNum}`).parentElement;
   cpu1Board.style.display = 'block';
@@ -208,11 +205,11 @@ function checkMatch() {
 }
 
 function checkDisplayedCards() {
-  const boardContainers = document.querySelectorAll('.board');
+  const boards = document.getElementsByClassName("board");
   for (let i = 0; i < displayedCards.length; i++) {
     const displayedCard = displayedCards[i];
-    for (let j = 0; j < boardContainers.length; j++) {
-      const boardCards = boardContainers[j].querySelectorAll('.card-container img');
+    for (let j = 0; j < boards.length; j++) {
+      const boardCards = boards[j].querySelectorAll('.card-container img');
       for (let k = 0; k < boardCards.length; k++) {
         const boardCard = boardCards[k];
         if (displayedCard.name === boardCard.src.split('/').pop() && !matchedCards.includes(boardCard.parentNode)) {
@@ -260,7 +257,7 @@ const intervalId = setInterval(() => {
 
 //drag and drop img of the token and clones the token to the wholebean container for further use of the token//
 const bean = document.getElementById('bean');
-const beanPiece = document.querySelectorAll(".bean-piece")
+const beanPiece = document.querySelector(".bean-piece")
 const grid = document.querySelectorAll(".board")
 const scoreDisplay = document.querySelector("#score")
 var beingDragged;
