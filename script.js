@@ -1,5 +1,4 @@
 let inPlay = false;
-
 function selectBoard(selectedBoard) {
   let allBoards = [1, 2, 3, 4, 5, 6];
   allBoards.splice(selectedBoard-1, 1);
@@ -29,11 +28,9 @@ function removeBoards(clickedBoard) {
     inPlay = true;
   }
   clickedBoard.style.display = "block";
-  // removeEventListener("onclick",removeBoards)
-
   playBackgroundMusic();
 }
-
+  
 //generates six random boards with no repeating cards in one board//
 function generateBoards() {
   const boardSize = 25;
@@ -84,6 +81,7 @@ function generateBoards() {
     }
   }
 }
+
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -93,6 +91,7 @@ function shuffleArray(array) {
 }
 
 generateBoards();
+
 
 // creates random numbers for the cpu selected boards
 function selectComputerBoards(selectedBoardIndex) {
@@ -174,63 +173,94 @@ const cards = [
   { name: 'takeaway.png', type: 'takeaway' },
 ];
 
+//shuffles the cards and displays the cards with a timer// 
+function shuffleCards(cards) {
+  for (let i = cards.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [cards[i], cards[j]] = [cards[j], cards[i]];
+  }
+  cards.forEach(card => {
+    card.used = false;
+  });
+}
+
+shuffleCards(cards);
+
 let cardIndex = 0;
+const boardCards = document.querySelectorAll(".card-container img")
 const cardImage = document.getElementById('card-image');
 cardImage.src = 'images/' + cards[cardIndex].name;
+const displayCard = document.querySelector('.display-card img');
+const boardCard = document.querySelector('.board img');
 
+cardImage.style.opacity = 1;
+cards[cardIndex].used = true;
+
+const displayedCards = [];
+const matchedCards = [];
+
+function checkMatch() {
+  for (let i = 0; i < boardCards.length; i++) {
+    if (cardImage.src === boardCards[i].src && !matchedCards.includes(boardCards[i].parentNode)) {
+      matchedCards.push(boardCards[i].parentNode);
+    }
+  }
+}
+
+function checkDisplayedCards() {
+  const boardContainers = document.querySelectorAll('.board');
+  for (let i = 0; i < displayedCards.length; i++) {
+    const displayedCard = displayedCards[i];
+    for (let j = 0; j < boardContainers.length; j++) {
+      const boardCards = boardContainers[j].querySelectorAll('.card-container img');
+      for (let k = 0; k < boardCards.length; k++) {
+        const boardCard = boardCards[k];
+        if (displayedCard.name === boardCard.src.split('/').pop() && !matchedCards.includes(boardCard.parentNode)) {
+          matchedCards.push(boardCard.parentNode);
+        }
+      }
+    }
+  }
+}
+const totalTime = 5000;
 const intervalId = setInterval(() => {
   if (cardIndex >= cards.length) {
     clearInterval(intervalId);
     return;
   }
   
+  let nextCard;
+  do {
+    nextCard = cards[Math.floor(Math.random() * cards.length)];
+  } while (nextCard.used);
+  
   const cardImage = document.getElementById('card-image');
-  cardImage.src = 'images/' + cards[cardIndex].name;
+  cardImage.src = 'images/' + nextCard.name;
+  cardImage.style.opacity = 1;
+  nextCard.used = true;
+  displayedCards.push(nextCard);
   cardIndex++;
   
   const timerBar = document.getElementById('timer-bar');
-  timerBar.style.width = '100%';
-  
-  setTimeout(() => {
-    timerBar.style.width = '0%';
-  }, 2000); 
-}, 3000);
-
-//let player place token or no token keep track array cards//
-let usedCards = []; // array to keep track of used cards
-
-function displayCard() {
-  const card = cards[Math.floor(Math.random() * cards.length)];
-  const index = usedCards.indexOf(card.name); // check if card was already used
-  if (index !== -1) {
-    usedCards.splice(index, 1); // remove card from usedCards if it was already used
-  }
-  usedCards.push(card.name); // add card to usedCards
-  const cardImg = document.createElement("img");
-  cardImg.src = "images/" + card.name;
-  document.getElementById("card-display").appendChild(cardImg);
-
-  // add event listener to card image to allow player to place a token on the board
-  cardImg.addEventListener("click", function() {
-    const selectedImg = document.querySelector(".board img[src='images/" + card.name + "']");
-    if (!selectedImg) {
-      alert("Error: no matching image on board");
-    } else {
-      const token = document.createElement("div");
-      token.classList.add("token");
-      selectedImg.parentElement.appendChild(token);
-      checkWin(selectedImg);
+  let timeLeft = totalTime;
+  const timerId = setInterval(() => {
+    timeLeft -= 10;
+    const timePercent = Math.max(0, (timeLeft / totalTime) * 100);
+    timerBar.style.width = `${timePercent}%`;
+    if (timeLeft <= 0) {
+      clearInterval(timerId);
+      timerBar.style.width = '0%';
+      cardImage.style.opacity = 0;
     }
-  });
-}
+  }, 10);
+  checkMatch();
+  checkDisplayedCards();
+}, totalTime + 1000);
 
 
-
-//bean img show up still not working//
+//drag and drop img of the token and clones the token to the wholebean container for further use of the token//
 const bean = document.getElementById('bean');
-
 const beanPiece = document.querySelectorAll(".bean-piece")
-console.log(beanPiece)
 const grid = document.querySelectorAll(".board")
 const scoreDisplay = document.querySelector("#score")
 var beingDragged;
@@ -245,36 +275,33 @@ grid.forEach(square => {
 })
 function dragging(){
   scoreDisplay.textContent = "You are dragging a " + beingDragged.id
-  console.log(dragging)
 }
 
 function drag(event) {
   event.dataTransfer.setData("text", event.target.id);
-  console.log(event)
 }
 
 function drop(event) {
- event.preventDefault();
- const image = document.createElement("token4.png");
- image.src = event.target.src;
- image.draggable = true;
- image.ondragstart = drag;
- event.target.parentNode.appendChild(image); 
+  event.preventDefault();
+  const data = event.dataTransfer.getData('text/plain');
+  const original = document.getElementById(data);
+  const clone = original.cloneNode(true);
+  clone.id = 'clone-' + clone.id;
+  clone.draggable = true;
+  clone.addEventListener('dragstart', dragStart);
+  event.target.appendChild(clone);
 }
 
-function dragStart(e) {
-  beingDragged = e.target
-  console.log(dragStart)
+function dragStart(event) {
+  event.dataTransfer.setData('text/plain', event.target.id);
 }
 
 function dragOver(e) {
   e.preventDefault()
-  console.log(dragOver)
 }
 
 function dragDrop(e) {
   e.target.append(beingDragged)
-  console.log(dragDrop)
 }
 
 function allowDrop(e) {
@@ -282,93 +309,7 @@ function allowDrop(e) {
   e.target.classList.remove('drag-over');
 }
 
-//check win//
-function checkWin(boardId) {
-  const board = document.getElementById(boardId);
-  const squares = board.getElementsByTagName("td");
-  const numSquares = squares.length;
-  const numRows = Math.sqrt(numSquares);
-  const boardArray = Array.from(squares).map(square => square.textContent);
-
-  // Check rows
-  for (let i = 0; i < numSquares; i += numRows) {
-    const row = boardArray.slice(i, i + numRows);
-    if (row.every(elem => elem === "X")) {
-      return "X";
-    } else if (row.every(elem => elem === "O")) {
-      return "O";
-    }
-  }
-
-  // Check columns
-  for (let i = 0; i < numRows; i++) {
-    const col = [];
-    for (let j = i; j < numSquares; j += numRows) {
-      col.push(boardArray[j]);
-    }
-    if (col.every(elem => elem === "X")) {
-      return "X";
-    } else if (col.every(elem => elem === "O")) {
-      return "O";
-    }
-  }
-
-  // Check diagonal from top left to bottom right
-  const diagonal1 = [];
-  for (let i = 0; i < numSquares; i += numRows + 1) {
-    diagonal1.push(boardArray[i]);
-  }
-  if (diagonal1.every(elem => elem === "X")) {
-    return "X";
-  } else if (diagonal1.every(elem => elem === "O")) {
-    return "O";
-  }
-
-  // Check diagonal from top right to bottom left
-  const diagonal2 = [];
-  for (let i = numRows - 1; i < numSquares - 1; i += numRows - 1) {
-    diagonal2.push(boardArray[i]);
-  }
-  if (diagonal2.every(elem => elem === "X")) {
-    return "X";
-  } else if (diagonal2.every(elem => elem === "O")) {
-    return "O";
-  }
-
-  // No winner yet
-  return null;
-}
-
-const winner = checkWin("myBoard");
-if (winner) {
-  alert(`Congratulations, player ${winner}! You won!`);
-}
-
-
-
-
-function takeAwayToken(board) {
-  const tokens = board.querySelectorAll(".token");
-  if (tokens.length > 0) {
-    const tokenIndex = Math.floor(Math.random() * tokens.length);
-    tokens[tokenIndex].parentNode.removeChild(tokens[tokenIndex]);
-  }
-}
-
-function placeTokenAnywhere(board) {
-  const cells = board.querySelectorAll(".cell");
-  const emptyCells = [];
-  for (let i = 0; i < cells.length; i++) {
-    if (!cells[i].querySelector(".token")) {
-      emptyCells.push(cells[i]);
-    }
-  }
-  if (emptyCells.length > 0) {
-    const cellIndex = Math.floor(Math.random() * emptyCells.length);
-    emptyCells[cellIndex].innerHTML = '<div class="token"></div>';
-  }
-}
-
+//win and gameover music//
 let gameEnded = false; // variable to keep track of whether the game has ended
 
 function playBackgroundMusic() {
@@ -385,6 +326,7 @@ function playVictoryMusic() {
   const victoryMusic = document.getElementById("win");
   victoryMusic.play();
 }
+
 
 function endGame(win) {
   gameEnded = true;
